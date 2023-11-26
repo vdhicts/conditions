@@ -102,6 +102,12 @@ $conditionCollection->only([ConditionLevel::Error, ConditionLevel::Warning]); //
 $conditionCollection->except([ConditionLevel::Info]); // Returns a condition collection of conditions without the provided levels
 ```
 
+It's also possible to merge multiple collections to one.
+
+```php
+$conditionCollection->merge($otherConditionCollection);
+```
+
 ### Transformer
 
 A transformer can be used to transform a condition to another presentation or create the condition from another presentation.
