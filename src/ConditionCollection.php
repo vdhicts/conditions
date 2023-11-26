@@ -29,6 +29,15 @@ class ConditionCollection
         return $this;
     }
 
+    public function merge(ConditionCollection $collection): self
+    {
+        $conditions = $this
+            ->conditions
+            ->merge($collection->get());
+
+        return new self($conditions);
+    }
+
     public function only(array|ConditionLevel $level): self
     {
         if ($level instanceof ConditionLevel) {

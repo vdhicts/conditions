@@ -111,4 +111,23 @@ class ConditionCollectionTest extends TestCase
         $this->assertFalse($otherConditionCollection->isNotFulfilled());
         $this->assertCount(2, $otherConditionCollection->get());
     }
+
+    public function testMerge(): void
+    {
+        $conditionCollection = new ConditionCollection(collect([
+            new Condition('test1', true, ConditionLevel::Info),
+        ]));
+        $otherConditionCollection = new ConditionCollection(collect([
+            new Condition('test3', false, ConditionLevel::Info),
+            new Condition('test4', true, ConditionLevel::Warning),
+            new Condition('test5', true, ConditionLevel::Error),
+        ]));
+
+        $mergedConditionCollection = $conditionCollection->merge($otherConditionCollection);
+
+        $this->assertFalse($mergedConditionCollection->isFulfilled());
+        $this->assertCount(4, $mergedConditionCollection->get());
+        $this->assertCount(1, $conditionCollection->get());
+        $this->assertCount(3, $otherConditionCollection->get());
+    }
 }
