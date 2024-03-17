@@ -10,7 +10,7 @@ class ConditionCollection
     /** @var Collection<Condition> */
     private readonly Collection $conditions;
 
-    public function __construct(Collection $conditions = null)
+    public function __construct(?Collection $conditions = null)
     {
         $this->conditions = $conditions ?? collect();
     }
