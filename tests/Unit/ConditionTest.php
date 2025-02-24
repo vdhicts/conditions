@@ -8,7 +8,7 @@ use Vdhicts\Conditions\Enums\ConditionLevel;
 
 class ConditionTest extends TestCase
 {
-    public function testInitializing(): void
+    public function test_initializing(): void
     {
         $condition = new Condition(
             name: 'test',
@@ -25,7 +25,7 @@ class ConditionTest extends TestCase
         $this->assertSame(['test' => 'data'], $condition->data);
     }
 
-    public function testInitializingFluent(): void
+    public function test_initializing_fluent(): void
     {
         $condition = (new Condition('test'))
             ->setFulfilled(true)
