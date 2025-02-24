@@ -12,8 +12,7 @@ class Condition
         public ConditionLevel $level = ConditionLevel::Info,
         public ?string $message = null,
         public array $data = []
-    ) {
-    }
+    ) {}
 
     public function setFulfilled(bool $fulfilled): Condition
     {

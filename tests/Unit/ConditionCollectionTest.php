@@ -9,7 +9,7 @@ use Vdhicts\Conditions\Enums\ConditionLevel;
 
 class ConditionCollectionTest extends TestCase
 {
-    public function testInitialization(): void
+    public function test_initialization(): void
     {
         $conditionCollection = new ConditionCollection();
 
@@ -17,7 +17,7 @@ class ConditionCollectionTest extends TestCase
         $this->assertFalse($conditionCollection->isNotFulfilled());
     }
 
-    public function testWithConditionsFulfilled(): void
+    public function test_with_conditions_fulfilled(): void
     {
         $conditionCollection = new ConditionCollection(collect([
             new Condition('test1', true),
@@ -31,7 +31,7 @@ class ConditionCollectionTest extends TestCase
         $this->assertCount(0, $conditionCollection->getNotFulfilled());
     }
 
-    public function testWithConditionsNotFulfilled(): void
+    public function test_with_conditions_not_fulfilled(): void
     {
         $conditionCollection = new ConditionCollection(collect([
             new Condition('test1', true),
@@ -45,7 +45,7 @@ class ConditionCollectionTest extends TestCase
         $this->assertCount(1, $conditionCollection->getNotFulfilled());
     }
 
-    public function testAddingConditions(): void
+    public function test_adding_conditions(): void
     {
         $conditionCollection = new ConditionCollection(collect([
             new Condition('test1', true),
@@ -64,7 +64,7 @@ class ConditionCollectionTest extends TestCase
         $this->assertCount(1, $conditionCollection->getNotFulfilled());
     }
 
-    public function testOnly(): void
+    public function test_only(): void
     {
         $conditionCollection = new ConditionCollection(collect([
             new Condition('test1', false, ConditionLevel::Info),
@@ -88,7 +88,7 @@ class ConditionCollectionTest extends TestCase
         $this->assertCount(2, $otherConditionCollection->get());
     }
 
-    public function testExcept(): void
+    public function test_except(): void
     {
         $conditionCollection = new ConditionCollection(collect([
             new Condition('test1', false, ConditionLevel::Info),
@@ -112,7 +112,7 @@ class ConditionCollectionTest extends TestCase
         $this->assertCount(2, $otherConditionCollection->get());
     }
 
-    public function testMerge(): void
+    public function test_merge(): void
     {
         $conditionCollection = new ConditionCollection(collect([
             new Condition('test1', true, ConditionLevel::Info),

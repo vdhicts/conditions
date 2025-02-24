@@ -9,7 +9,7 @@ use Vdhicts\Conditions\Enums\ConditionLevel;
 
 class ConditionTransformerTest extends TestCase
 {
-    public function testToArray(): void
+    public function test_to_array(): void
     {
         $condition = new Condition(
             name: 'test',
@@ -34,7 +34,7 @@ class ConditionTransformerTest extends TestCase
         $this->assertSame(['test' => 'data'], $array['data']);
     }
 
-    public function testFromArray(): void
+    public function test_from_array(): void
     {
         $array = [
             'name' => 'test',
